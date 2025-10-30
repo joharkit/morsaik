@@ -1,0 +1,188 @@
+\chapter{morsaik-Objects}
+
+Given the domains in the last section,
+we can now define typical \modst{morsaik}-objects.
+\begin{enumerate}
+    \item motif vector: $\motifSpace \rightarrow O \in \{\numberSpace_{u}, \concentrationSpace_u\}$ with some unit $u$.\\
+        Vector of motif concentrations or numbers,
+        see Section~\ref{sec:MotifVector}
+        (unit specified by keyword unit):\\
+        motif number vector: $\motifSpace \rightarrow \numberSpace_{[1]}$, and\\
+        motif concentration vector: $\motifSpace \rightarrow \concentrationSpace_{[\mathrm{mol}/\mathrm{L}]}$
+    \item motif trajectory: $\motifSpace \otimes \timeSpace \rightarrow O \in \{\numberSpace_{u}, \concentrationSpace_u\}$ with some unit $u$.\\
+        Time series of motif vectors, expecially\\
+        motif number trajectory: $\motifSpace \otimes \timeSpace \rightarrow \numberSpace_{[1]}$, and\\
+        motif concentration trajectory: $\motifSpace \otimes \timeSpace \rightarrow \concentrationSpace_{[\mathrm{mol}/\mathrm{L}]}$
+    \item motif trajectory ensemble: $\motifSpace \otimes \timeSpace \otimes \Idx \rightarrow O \in \{\numberSpace_{u}, \concentrationSpace_u\}$ with some unit $u$.\\
+        Ensemble of motif trajectories,//
+        motif number trajectory ensemble: $\motifSpace \otimes \timeSpace \otimes \Idx \rightarrow \numberSpace_{[1]}$, and\\
+        motif concentration trajectory ensemble: $\motifSpace \otimes \timeSpace \otimes \Idx \rightarrow \concentrationSpace_{[\mathrm{mol}/\mathrm{L}]}$
+    \item motif production vector: $\motifProductionSpace \rightarrow \numberSpace_{[1]}$\\
+        Vector of motif productions,
+        specified by the product motif,
+        the template motif,
+        the ligation window and
+        the location of the ligation inside this ligation window,
+        see Section\ref{sec:MotifProductionVector}
+    \item motif production trajectory: $\motifProductionSpace \otimes \timeSpace \rightarrow \numberSpace_{[1]}$\\
+        Time series of motif production vectors.
+    \item motif production trajectory ensemble: $\motifProductionSpace \otimes \timeSpace \otimes \Idx \rightarrow \numberSpace_{[1]}$\\
+        Ensemble of motif production trajectories.
+    \item motif production rate constant: $\motifProductionSpace \rightarrow \concentrationSpace_{[\mathrm{L}^2/\mathrm{mol}^2]}$
+    \item motif breakage vector: $\motifBreakageSpace \rightarrow \numberSpace_{[1]}$\\
+        Vector of motif breakages,
+        specified by the left and the right broken motif.
+    \item motif breakage trajectory: $\motifBreakageSpace \otimes \timeSpace \rightarrow \numberSpace_{[1]}$\\
+        Time series of of motif breakage vectors.
+    \item motif breakage trajectory ensemble: $\motifBreakageSpace \otimes \timeSpace \otimes \Idx \rightarrow \numberSpace_{[1]}$\\
+        Ensemble of motif breakage trajectories.
+    \item motif breakage rate constant: $\motifBreakageSpace \rightarrow \concentrationSpace_{[\mathrm{mol}/\mathrm{L}]}$\\
+\end{enumerate}
+
+\section{Motif Vector}
+\label{sec:MotifVector}
+
+As a parent class for motif number vector and motif concentration vector serves
+the abstract class motif vector.
+Its domain is the same like for motif number and motif concentration vector,
+however its unit is unspecified.
+For convenience, function to save and load \modst{MotifVector}-objects on
+respectively from the disk are implemented, as well as functions that compare
+\modst{MotifVector}-domains, for example to build trajectories, see
+Figure~\ref{fig:MotifVector}.
+For computations, \modst{MotifVectors} can be transformed to \modst{jax.Array}s
+(and back), see Figure~\ref{fig:MotifVectorTransformations}.
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[
+            modulenode1/.style={double,rounded corners, draw=black!60, fill=white!5, thick, minimum size=3mm},
+            objnode1/.style={ellipse, draw=black!60, fill=white!5, very thick, minimum size=3mm},
+            opnode1/.style={rectangle, draw=black!60, fill=white!5, very thick, minimum size=3mm},
+        ]
+        %Nodes
+        \node[objnode1]  (MVnode) {MotifVector};
+        \node[opnode1]  (savenode)  [right =of MVnode] {$\mathsf{save\_motif\_vector}$};
+        \node[opnode1]  (loadnode)  [left =of MVnode] {$\mathsf{load\_motif\_vector}$};
+        \node[opnode1]  (instancenode)  [below=of loadnode] {$\mathsf{isinstance\_motifvector}$};
+        \node[opnode1]  (compatiblenode)  [below=of savenode] {$\mathsf{are\_compatible\_motif\_vectors}$};
+        \node[objnode1] (bool1node) [below=of instancenode] {$\mathsf{boolean}$};
+        \node[objnode1] (bool2node) [below=of compatiblenode] {$\mathsf{boolean}$};
+        \node[objnode1] (pathnode) [above=of MVnode] {$\mathsf{file\_path}$:$\mathsf{string}$};
+        \node[objnode1] (filenode) [above=of savenode] {$\mathsf{file}$};
+        %Lines
+        \draw[->, very thick] (loadnode.east) -- (MVnode.west);
+        \draw[->, very thick] (pathnode.south west) -- (loadnode.north east);
+        \draw[->, very thick] (MVnode.east) -- (savenode.west);
+        \draw[->, very thick] (pathnode.south east) -- (savenode.north west);
+        \draw[->, very thick] (savenode.north) -- (filenode.south);
+        \draw[->, very thick] (MVnode.south west) -- (instancenode.north east);
+        \draw[->, very thick] (MVnode.south east) -- (compatiblenode.north);
+        \draw[->, very thick] (MVnode.south) -- (compatiblenode.north west);
+        \draw[->, very thick] (compatiblenode.south) -- (bool2node.north);
+        \draw[->, very thick] (instancenode.south) -- (bool1node.north);
+    \end{tikzpicture}
+    \caption{Motif Vector object and related functions.}
+    \label{fig:MotifVector}
+\end{figure}
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[
+            modulenode1/.style={double,rounded corners, draw=black!60, fill=white!5, thick, minimum size=3mm},
+            objnode1/.style={ellipse, draw=black!60, fill=white!5, very thick, minimum size=3mm},
+            opnode1/.style={rectangle, draw=black!60, fill=white!5, very thick, minimum size=3mm},
+            nonode1/.style={},
+        ]
+        \node[nonode1] (centernode) {};
+        \node[objnode1]  (MVnode) [left=of centernode] {MotifVector};
+        \node[opnode1]  (vector2arraynode)  [above =of centernode] {$\mathsf{\_motif\_vector\_as\_array}$};
+        \node[opnode1]  (array2vectornode)  [below =of centernode] {$\mathsf{\_array\_to\_motif\_vector\_dct}$};
+        \node[objnode1]  (manode) [right =of centernode] {$\mathsf{motif\_array:numpy.ndarray}$};
+        \node[opnode1]  (sequence2arraynode)  [above =of vector2arraynode] {$\mathsf{\_transform\_sequence\_array\_to\_motif\_array}$};
+        \node[opnode1]  (createnode)  [left=of MVnode] {$\mathsf{\_create\_empty\_motif\_vector\_dct}$};
+        \node[opnode1]  (indicesnode)  [above =of manode] {$\mathsf{\_motif\_indices\_in\_motifs\_array}$};
+        %Lines
+        \draw[->, very thick] (MVnode.north) -- (vector2arraynode.south west);
+        \draw[->, very thick] (createnode.east) -- (MVnode.west);
+        \draw[->] (vector2arraynode.north) -- (sequence2arraynode.south west);
+        \draw[->] (sequence2arraynode.south east) -- (vector2arraynode.north);
+        \draw[->, very thick] (vector2arraynode.south east) -- (manode.north west);
+        \draw[->, very thick] (manode.south west) -- (array2vectornode.north east);
+        \draw[->, very thick] (array2vectornode.north west) -- (MVnode.south);
+    \end{tikzpicture}
+    \caption{The transformation of a Motif Vector to a numpy array and back.}
+    \label{fig:MotifVectorTransformations}
+\end{figure}
+
+\section{Motif Production Vector}
+\label{sec:MotifProductionVector}
+
+The motif production vector carries the motif productions in form of a named
+tuple with properties whose keys are built as
+$\mathsf{<product\_key>}\_\mathsf{<ligation\_window\_length>}\_\mathsf{<ligation\_spot>}\_\mathsf{<template\_key>}$.
+Each of these reactions are specified by an array of the size of the number of
+nucleotides involved in the reaction.
+Ends are not captured as they are already fully specified by the
+$\mathsf{<product\_key>}$ and the $\mathsf{<template\_key>}$,
+their relative position is specified by the 
+$\mathsf{<ligation\_window\_length>}$ and the $\mathsf{<ligation\_spot>}$:
+The $\mathsf{<ligation\_window\_length>}$ is chosen such that it captures all
+hybridized nucleotides and at maximum one more dangling or vertical end at each
+side.
+
+The $\mathsf{<ligation\_spot>}$ is a natural number between one and 
+$\left(\mathsf{<ligation\_window\_length>}-2\right)$, where one encodes the ligation after
+the first two nucleotide spots in the ligation window and
+$\left(\mathsf{<ligation\_window\_length>}-2\right)$ the ligation two nucleotides before the
+end of the ligation window end.
+
+The $\mathsf{<ligation\_spot>}$ being zero is theoretically possible, this
+would mean that the ligation happens directly after the first nucleotide spot.
+By definition, there is no ligation window that captures such a reaction 
+-- only if the $\mathsf{<maximum\_ligation\_window\_length>}$ is set to two, then
+$\mathsf{<ligation\_spot>}$ is always zero.
+
+For all $\mathsf{<maximum\_ligation\_window\_length>}>2$, the zeroth ligation
+spot is either a dangling end, which does not allow templated ligation, or a
+continuation to the corresponding side, however, then this reaction is captured
+by another ligation window that is just moved further to the left.
+
+An alternative representation of the productions is the representation as
+$\mathsf{jax.Array}$, which is just called motif array in the following.
+Its format is arranged such that the ligation spot is always in the
+center of the $\mathsf{<maximum\_ligation\_window\_length>}$.
+Periodic boundary conditions enable to track the whole ligation windows:
+
+\paragraph{Example:}
+Let the monomer `$\mathtt{a}$' ligate to the tetramer `$\mathtt{tta}$' on the
+(beginning) template `$\mathtt{tatat}$'.
+This reaction is fully captured by a ligation window of length 6, with a
+dangling end at the left hand side and a vertical end at the right hand side.
+We state the ligation spot on the template with a ``$\text-$'',
+the ligation between the two reactants with ``$|$''
+and seperate the product from the template with a ``$:$''.
+The described reaction would then be noted as
+`$\mathtt{a|tta:tat\text{-}at}$'.
+
+In the array format, we explicitly note ends (or beginnings) with zeros.
+Then the reaction is denoted as `$\mathtt{0a|tta0:0tat\text-at}$'.
+For compactness, we choose the ligation in the array always to happen in the
+center of the ligation window.
+Additionally, we imply periodic boundary conditions, 
+to track the continuation of the product outside the ligation window and save
+unnecessary zeros. 
+The end of the ligation window is then specified by a zero either in the
+template or in the product motif or in both.
+With such periodic boundary conditions and the ligation spot in the center, the
+array-format becomes
+`$\mathtt{0;0a|tta:tat\text-at;0}$'.
+The array for a ligation window of length six is defined on the domain
+$\alphabet_0^2 \otimes \alphabet^2 \otimes \alphabet_0 \bigotimes \alphabet_0
+\otimes \alphabet^2 \otimes \alphabet_0^2$.
+The indices at the ligation spot always indicate letters (never empty spots),
+thus their index 0 denotes the first letter, where at all other ligation spots
+0 actually denotes an empty spot.
+With this, we finally find the array format of the same reaction as
+$(0;0,0|1,2,1:2,1,1\text-0,2;0)$.
+The motif production array in $\mathsf{jax.Array}$-format saves this reaction
+with the index tuple $(0,0,0,1,2,1,2,1,1,0,2,0)$.

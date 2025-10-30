@@ -1,0 +1,86 @@
+\chapter{infer-Module}
+
+The infer module is responsible for inferring variable from data.
+Different models are implemented here that allow different inferences.
+Typical inference functions use Bayesian inference (using \modst{NIFTy.re}),
+but there are also infer-functions that naively compute one variable from the
+other in a deterministic, non-statistical fashion,
+as well as functions that simulate dynamics,
+such as motif dynamics,
+given the parameters of those dynamics.
+For an overview of main concept in the \modst{infer} module see
+Figure~\ref{fig:InferSubmod},
+for an example, Figure~\ref{fig:MotifTrajectoryFromRateConstants}.
+Note that in the figures, names of functions might be abbreviated or more
+abstract.
+For the exact name of the function, please refer to the documentation.
+\begin{figure}
+    \centering
+    \rotatebox{90}{
+    \begin{tikzpicture}[
+            modulenode1/.style={double,rounded corners, draw=black!60, fill=white!5, thick, minimum size=3mm},
+            objnode1/.style={ellipse, draw=black!60, fill=white!5, very thick, minimum size=3mm},
+            opnode1/.style={rectangle, draw=black!60, fill=white!5, very thick, minimum size=3mm},
+        ]
+        %Nodes
+        \node[modulenode1]  (infernode)  {infer};
+        \node[opnode1] (rates2motifsnode) [right=of infernode] {$\mathsf{motif\_concentration\_trajectory\_from\_rate\_constants}$};
+        \node[opnode1] (concentrations2rateconstantsnode) [above left=of infernode] {$\mathsf{rate\_constants\_from\_motif\_concentration\_trajectories}$};
+        \node[opnode1] (counts2rateconstantsnode) [left=of infernode] {$\mathsf{rate\_constants\_from\_motif\_production\_trajectories}$};
+        \node[opnode1] (parameters2rateconstantsnode) [below left=of infernode] {$\mathsf{rate\_constants\_from\_strand\_reactor\_parameters}$};
+        \node[objnode1] (rcnode) [below=of rates2motifsnode] {$\mathsf{rate\_constants}$};
+        \node[objnode1] (mtnode) [above=of rates2motifsnode] {$\mathsf{MotifTrajectoryEnsemble}$};
+        %Lines
+        \draw[-, very thick] (infernode.east) -- (rates2motifsnode.west);
+        \draw[-, very thick] (infernode.west) -- (counts2rateconstantsnode.east);
+        \draw[-, very thick] (infernode.north west) -- (concentrations2rateconstantsnode.south east);
+        \draw[->, very thick] (counts2rateconstantsnode.south east) -- (rcnode.west);
+        \draw[->, very thick] (concentrations2rateconstantsnode.east) -- (rcnode.north west);
+        \draw[->, very thick] (parameters2rateconstantsnode.east) -- (rcnode.west);
+        \draw[-, very thick] (infernode.south west) -- (parameters2rateconstantsnode.north east);
+        \draw[->, very thick] (rcnode.north) -- (rates2motifsnode.south);
+        \draw[->, very thick] (rates2motifsnode.north) -- (mtnode.south);
+        \draw[->, very thick] (mtnode.west) -- (concentrations2rateconstantsnode.north east);
+    \end{tikzpicture}
+    }
+    \caption{Graphical representation of the inference submodule and its main concepts.}
+    \label{fig:InferSubmod}
+\end{figure}
+
+%\subsubsection{Infer Motif Trajectories from Rate Constants}
+
+\begin{figure}
+    \centering
+    \rotatebox{90}{
+    \begin{tikzpicture}[
+            modulenode1/.style={double,rounded corners, draw=black!60, fill=white!5, thick, minimum size=3mm},
+            objnode1/.style={ellipse, draw=black!60, fill=white!5, very thick, minimum size=3mm},
+            objnode2/.style={ellipse, draw=black!60, fill=white!5, thick, minimum size=3mm},
+            opnode1/.style={rectangle, draw=black!60, fill=white!5, very thick, minimum size=3mm},
+            opnode2/.style={rectangle, draw=black!60, fill=white!5, thick, minimum size=3mm},
+        ]
+        %Nodes
+        \node[opnode1] (rates2motifsnode) {$\mathsf{infer.fourmer\_trajectory\_from\_rate\_constants}$};
+        \node[objnode2] (timesnode) [above left=of rates2motifsnode]{$\mathsf{times : TimesVector}$};
+        \node[objnode2] (inimocove) [above =of timesnode]{$\mathsf{initial\_motif\_concentrations\_vector : MotifVector}$};
+        \node[objnode2] (brearaconode) [above =of inimocove]{$\mathsf{breakage\_rate\_constants : MotifBreakageVector}$};
+        \node[objnode2] (moprorateconode) [above=of brearaconode]{$\mathsf{motif\_production\_rate\_constants : MotifProductionVector}$};
+        \node[objnode2] (complnode) [left=of rates2motifsnode]{$\mathsf{complements : list}$};
+        \node[objnode2] (odeintmethnode) [below left=of
+        rates2motifsnode]{$\mathsf{ode\_integration\_method:str=``BDF"}$};
+        \node[objnode2] (exectimenode) [below =of odeintmethnode]{$\mathsf{execution\_time\_path:str=None}$};
+        \node[objnode2] (motra) [right=of rates2motifsnode]{$\mathsf{MotifConcentrationTrajectory}$};
+        %Lines
+        \draw[->, thick] (moprorateconode.east) -- (rates2motifsnode.north);
+        \draw[->, thick] (brearaconode.east) -- (rates2motifsnode.north);
+        \draw[->, thick] (inimocove.east) -- (rates2motifsnode.north);
+        \draw[->, thick] (timesnode.east) -- (rates2motifsnode.north west);
+        \draw[->, thick] (complnode.east) -- (rates2motifsnode.west);
+        \draw[->, thick] (odeintmethnode.east) -- (rates2motifsnode.south);
+        \draw[->, thick] (exectimenode.east) -- (rates2motifsnode.south);
+        \draw[->, thick] (rates2motifsnode.east) -- (motra.west);
+    \end{tikzpicture}
+    }
+    \caption{Graphical representation of the $\mathsf{infer.motif\_trajectory\_from\_rate\_constants}$ function.}
+    \label{fig:MotifTrajectoryFromRateConstants}
+\end{figure}

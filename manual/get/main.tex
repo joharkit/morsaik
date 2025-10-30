@@ -1,0 +1,12 @@
+\chapter{get-Module}
+
+The \modst{get} submodule is a convenience submodule combining the \modst{read}- and the
+\modst{infer}-submodules.
+Giving the id of the object, one wants to get, it looks, whether it can read
+an already computed version from disk and give you the corresponding object.
+If there is no saved version, it infers (sometimes simulates) the object asked
+for from the information it has.
+For each id, a yaml file specifies this information.
+The yaml files are saved in the \modst{config}-directory for parameters
+specified by the user or in the \modst{archive}-directory for saving computed
+arrays.

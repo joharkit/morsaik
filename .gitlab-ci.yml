@@ -1,0 +1,48 @@
+image: python:3.10-slim
+
+stages:
+    - install
+    - test
+    - release
+    - demo_runs
+
+cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+        - .cache/poetry
+        - poetry.lock
+        - pyproject.toml
+
+before_script:
+    - apt-get update && apt-get install -y curl
+    - curl -sSL https://install.python-poetry.org | python3 -
+    - export PATH="$HOME/.local/bin:$PATH"
+    - poetry config virtualenvs.create true
+    - poetry install --no-interaction
+
+install:
+    stage: install
+    script:
+        - poetry install --no-interaction
+
+test:
+    stage: test
+    script:
+        - poetry run pip install pytest
+        - poetry run pytest
+
+release:
+    stage: release
+    script:
+        - poetry build
+
+run_0_monomer-dimer-system:
+    stage: demo_runs
+    script: 
+        - poetry run python3 demos/0_monomer-dimer-system.py
+        - poetry run python3 demos/1_read_strand_reactor_data.py
+        - poetry run python3 demos/2_infer_motif_rates_from_ligation_counts.py
+    artifacts:
+        paths:
+            - "*.pdf"
+            - "*.pgf"

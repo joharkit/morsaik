@@ -1,0 +1,72 @@
+\chapter{domains-Module}
+
+Domains specify the domains on which the \modst{morsaik}-objects live.
+They ensure compatibility and consistence of implemented code.
+This is especially important for the inference part
+when performed with the \modst{NIFTy} package \cite{Edenhofer2024NIFTyre}.
+Typically, shapes and units of \modst{morsaik}-objects are specified here.
+We define the following domains:
+
+\begin{itemize}
+    \item Index set $\Idx$\\
+        In general, not implemented explicitly in the
+        \modst{morsaik}-package,
+        but implicitly captured by shapes of objects.
+    \item Time Space $\timeSpace \in \{ \R, \R^n \}$\\
+        Typically used for specifying the time points of measurements.
+    \item Number Space $\numberSpace_u \cong \No$ for all units $u$\\
+        If for example motifs or reactions are counted explicitly
+    \item Concentration Space $\concentrationSpace_u \cong \nnR$ for all units
+        $u$\\
+        For example for concentrations of motifs or average reactions
+    \item Hamming Space $\hammingSpace$\\
+        Set of all motifs with letters from the alphabet
+        $\alphabet$ and length $\motiflength$
+    \item Motif Space
+        $\motifSpace = \bigoplus_{\motiflength' \leq \motiflength} \hammingspace_{\alphabet,\motiflength'}$\\
+        Set of all strands or motifs with letters from the alphabet
+        $\alphabet$ and maximum length $\motiflength$
+    \item Motif Hyphen Space $\motifHyphenSpace 
+        = \bigoplus_{\motiflength' \in \{2,\dots,\motiflength\}}
+        \bigoplus_{i \in \{1, \dots, \motiflength'-1\} }
+        \hammingspace_{\alphabet,\motiflength'}
+        = \bigoplus_{\motiflength' \in \{2,\dots,\motiflength\}}
+        \hammingspace_{\alphabet,\motiflength'}^{\motiflength'-1}$\\
+        Set of motif specific covalent bonds with index $i$ indicating the
+        position of the covalent bond in the $\motiflength'$-mer.
+    \item Extended Motif Production Space $\widetilde \motifProductionSpace
+        = \motifSpace
+        \otimes \motifSpace
+        \otimes \motifHyphenSpace$\\
+        The first motif space specifies the (left) ending reactant, the second
+        motif space the (right) beginning reactant, the third space is the
+        motif coupling vector space that indicates the template and its
+        covalent bound.
+        Here, $\Idx$ sets the index of the ligation spot on the template,
+        which is a number between one and the length of the template minus one.
+        \\
+        The reduced motif production space $\motifProductionSpace
+        = \motifHyphenSpace
+        \otimes \motifHyphenSpace$
+        is specified by the central product and the template motif
+        that overlaps the most with the central product.
+        In this reduced space, one marginalizes out the dangling ends of the
+        reactants.
+    \item Extended Motif Breakage Space $\widetilde \motifBreakageSpace = \motifSpace \otimes
+        \motifSpace$ is specified by the motif space of the left broken and the
+        right broken motif.
+        \\
+        The reduced breakage space is specified by the breaking motif and thus
+        is less dimensional:
+        $\motifBreakageSpace =\motifHyphenSpace$
+        here, $\Idx$ sets the index of the breakage spot
+        thus, a number between one and the length of the breaking motif minus one.
+\end{itemize}
+Typically, units can be assigned to the domains, for example
+\begin{itemize}
+    \item time: $s$
+    \item concentrations: $\mathrm{mol}/\mathrm L$
+    \item numbers: $1$ or mol specifically
+    \item motif production rate constant: $\left( \mathrm L / \mathrm{mol} \right)^2$
+    \item breakage rate constants: $\mathrm{mol}/\mathrm{L}$
+\end{itemize}

@@ -1,0 +1,316 @@
+\usepackage[symbols,nogroupskip,nonumberlist,sort=use]{glossaries-extra}
+
+% Thermodynamics
+\glsxtrnewsymbol[description={log concentration}]{tildec}{\ensuremath{\tilde c}}
+\def\logc{{\ensuremath{\gls{tildec}}}}
+
+\glsxtrnewsymbol[description={coldness (thermodynamic beta)}]{ctb}{\ensuremath{\beta}}
+\def\ctb{{\ensuremath{\gls{ctb}}}}
+
+\glsxtrnewsymbol[description={volume}]{vol}{\ensuremath{V}}
+\def\vol{{\ensuremath{\gls{vol}}}}
+
+\glsxtrnewsymbol[description={Avogadro constant}]{avo}{\ensuremath{N_\text{A}}}
+\def\avo{{\ensuremath{\gls{avo}}}}
+
+\glsxtrnewsymbol[description={Gibbs free energy}]{gibbs}{\ensuremath{\mathcal{G}}}
+\def\gibbs{{\ensuremath{\gls{gibbs}}}}
+
+\glsxtrnewsymbol[description={concentration}]{c}{\ensuremath{c}}
+\def\c{{\ensuremath{\gls{c}}}}
+
+\glsxtrnewsymbol[description={Boltzmann constant}]{kB}{\ensuremath{k_\text{B}}}
+\def\kB{{\ensuremath{\gls{kB}}}}
+
+\glsxtrnewsymbol[description={Temperature}]{T}{\ensuremath{T}}
+\def\T{{\ensuremath{\gls{T}}}}
+
+% RNA
+\def\nuclvar{\ensuremath{x}}
+\def\lettervar{\ensuremath{a}}
+\newcommand\komplement[1]{\ensuremath{{#1}^*}}
+\glsxtrnewsymbol[description={complement of nucleotide $\nuclvar$}]{komplementx}{\ensuremath{\komplement{\nuclvar}}}
+\def\komplementx{{\ensuremath{\gls{komplementx}}}}
+
+\def\motifvar{\ensuremath{m}}
+\newcommand\mkomplement[1]{\ensuremath{{#1}^\dagger}}
+\glsxtrnewsymbol[description={complement of a motif $\motifvar$}]{mkomplementm}{\ensuremath{\mkomplement{\motifvar}}}
+\def\mkomplementm{{\ensuremath{\gls{mkomplementm}}}}
+
+
+% Strand Dynamics
+\glsxtrnewsymbol[description={reference concentration in $\text{mol}/\text{L}$}]{c0}{\ensuremath{\c_0}}
+\def\cO{{\ensuremath{\gls{c0}}}}
+\def\motifc{{\ensuremath{\c_\motifvar}}}
+\def\motiflogc{{\ensuremath{\logc_\motifvar}}}
+
+\glsxtrnewsymbol[description={alphabet}]{alphabet}{\ensuremath{\mathcal{A}}}
+\def\alphabet{{\ensuremath{\gls{alphabet}}}}
+
+\glsxtrnewsymbol[description={total mass, \ie number of nucleotides}]{tm}{\ensuremath{M}}
+\def\tm{{\ensuremath{\gls{tm}}}}
+
+\glsxtrnewsymbol[description={complex species}]{complspec}{\ensuremath{C}}
+\def\complspec{{\ensuremath{\gls{complspec}}}}
+
+\glsxtrnewsymbol[description={strand length}]{strandlength}{\ensuremath{L}}
+\def\strandlength{{\ensuremath{\gls{strandlength}}}}
+
+\glsxtrnewsymbol[description={mean strand length}]{meanstrandlength}{\ensuremath{\overline \strandlength}}
+\def\msl{{\ensuremath{\gls{meanstrandlength}}}}
+
+%% (De-)Hybridization
+\glsxtrnewsymbol[description={hybridization Gibbs energy}]{Ghyb}{\ensuremath{\Delta \gibbs_\text{hyb}}}
+\def\Ghyb{{\ensuremath{\gls{Ghyb}}}}
+
+\glsxtrnewsymbol[description={total free energy of a hybridized complex}]{Gtot}{\ensuremath{\Delta \gibbs_\text{tot}}}
+\def\Gtot{{\ensuremath{\gls{Gtot}}}}
+
+\glsxtrnewsymbol[description={hybridization rate constant}]{hrc}{\ensuremath{k_\text{on}}}
+\def\hrc{{\ensuremath{\gls{hrc}}}}
+
+\glsxtrnewsymbol[description={dehybridization rate constant}]{drc}{\ensuremath{k_\text{off}}}
+\def\drc{{\ensuremath{\gls{drc}}}}
+
+\glsxtrnewsymbol[description={symmetry factor}]{symfac}{\ensuremath{\rho}}
+\def\symfac{{\ensuremath{\gls{symfac}}}}
+
+\glsxtrnewsymbol[description={number of possible hybridization channels}]{hcn}{\ensuremath{\chi}}
+\def\hcn{{\ensuremath{\gls{hcn}}}}
+
+\glsxtrnewsymbol[description={dissociation constant}]{discon}{\ensuremath{K_D}}
+\def\discon{{\ensuremath{\gls{discon}}}}
+
+\glsxtrnewsymbol[description={marginalized dissociation constant}]{mdiscon}{\ensuremath{\tilde K_D}}
+\def\mdiscon{{\ensuremath{\gls{mdiscon}}}}
+
+%%% stacking energy double strand
+\def\seds{{\ensuremath{\gamma}}}
+
+\glsxtrnewsymbol[description={average energy value of complementary blocks}]{aevocb}{\ensuremath{\overline \seds_\text{com}}}
+\def\aevocb{{\ensuremath{\gls{aevocb}}}}
+
+\glsxtrnewsymbol[description={stacking energy for nearest neighbor blocks containing one non-complementary nucleotide pairs}]{seImm}{\ensuremath{\seds_\text{1nc}}} %stacking energy one missmatch
+\def\seImm{{\ensuremath{\gls{seImm}}}}
+
+\glsxtrnewsymbol[description={stacking energy for nearest neighbor blocks containing two non-complementary nucleotide pairs}]{seIImm}{\ensuremath{\seds_\text{2nc}}} %stacking energy two missmatches
+\def\seIImm{{\ensuremath{\gls{seIImm}}}}
+
+\glsxtrnewsymbol[description={stacking energy difference of alternating and homogeneous blocks}]{sedoahb}{\ensuremath{\Delta \seds}}
+\def\sedoahb{{\ensuremath{\gls{sedoahb}}}}
+
+\glsxtrnewsymbol[description={lower bound dehybridization length (for completely complementary hybridization with more nucleotides will dehybridize with the same rate)}]{lbdl}{\ensuremath{l_\text{low}}}
+\def\lbdl{{\ensuremath{\gls{lbdl}}}}
+
+%%% stacking energy dangling end
+\def\sede{\ensuremath{\epsilon}}
+\glsxtrnewsymbol[description={average energy value of complementary blocks with dangling end}]{aevocbde}{\ensuremath{\overline \sede_\text{com}}}
+\def\aevocbde{{\ensuremath{\gls{aevocbde}}}}
+
+\glsxtrnewsymbol[description={stacking energy for nearest neighbor blocks with dangling end containing one non-complementary nucleotide pairs}]{sedeImm}{\ensuremath{\sede_\text{1nc}}} %stacking energy one missmatch
+\def\sedeImm{{\ensuremath{\gls{sedeImm}}}}
+
+\glsxtrnewsymbol[description={stacking energy difference of alternating and homogeneous blocks with dangling end}]{sededoahb}{\ensuremath{\delta_\sede}}
+\def\sededoahb{{\ensuremath{\gls{sededoahb}}}}
+
+%% Ligation
+\glsxtrnewsymbol[description={ligation rate constant}]{lrc}{\ensuremath{k_\text{lig}}}
+\def\lrc{{\ensuremath{\gls{lrc}}}}
+
+\glsxtrnewsymbol[description={ligation length}]{liglen}{\ensuremath{l_\text{lig}}}
+\def\liglen{{\ensuremath{\gls{liglen}}}}
+
+\def\stallingfactorsymbol{\ensuremath{\Phi}}
+\glsxtrnewsymbol[description={stalling factors}]{stalfac}{\ensuremath{\stallingfactorsymbol_\pm}}
+\def\stalfac{{\ensuremath{\gls{stalfac}}}}
+\def\stalfacp{\ensuremath{\stallingfactorsymbol_+}}
+\def\stalfacm{\ensuremath{\stallingfactorsymbol_-}}
+
+\glsxtrnewsymbol[description={complementarity, index $\pm i, i \in \{ 1,2\}$ indicates relative position to the ligation spot: $\pm$ left/right, nearest ($1$) or nextnearest ($2$) neighbour}]{complementarities}{\ensuremath{\kappa}}
+\def\complementarity{{\gls{complementarities}}}
+\def\complementarityp{{\ensuremath{\complementarity_{+1}}}}
+\def\complementaritypp{{\ensuremath{\complementarity_{+2}}}}
+\def\complementaritym{{\ensuremath{\complementarity_{-1}}}}
+\def\complementaritymm{{\ensuremath{\complementarity_{-2}}}}
+\def\complementaritypm{{\ensuremath{\complementarity_{\pm 1}}}}
+\def\complementarityppmm{{\ensuremath{\complementarity_{\pm 2}}}}
+
+\def\stalparsym{\ensuremath{\sigma}}
+\glsxtrnewsymbol[description={stalling parameter, $i \in \{1,2\}$}]{stalpars}{\ensuremath{\stalparsym_i}}
+\def\stalparI{{\ensuremath{\stalparsym_1}}}
+\def\stalparII{{\ensuremath{\stalparsym_2}}}
+
+%% Cleavage
+\def\cleavagesym{{\ensuremath{\varrho}}}
+\glsxtrnewsymbol[description={cleavage rate constant}]{clrc}{\ensuremath{\cleavagesym}}
+\def\clrc{{\ensuremath{\gls{clrc}}}}
+
+\glsxtrnewsymbol[description={effective cleavage rate constant}]{ecrc}{\ensuremath{\tilde \cleavagesym}}
+\def\ecrc{{\ensuremath{\gls{ecrc}}}}
+
+%% Collision
+\glsxtrnewsymbol[description={collision time scale}]{t0}{\ensuremath{t_0}}
+\def\tO{{\ensuremath{\gls{t0}}}}
+
+\glsxtrnewsymbol[description={collision rate constant }]{crc}{\ensuremath{k_\text{coll}}}
+\def\crc{{\ensuremath{\gls{crc}}}}
+
+% Motif Dynamics
+\glsxtrnewsymbol[description={motif length}]{motiflength}{\ensuremath{\ell}}
+\def\motiflength{{\ensuremath{\gls{motiflength}}}}
+\def\mtflngth{{\ensuremath{b}}}
+
+\glsxtrnewsymbol[description={total number of motifs}]{totalnumberofmotifs}{\ensuremath{\mathcal{N}}}
+\def\totalnumberofmotifs{{\ensuremath{\gls{totalnumberofmotifs}}}}
+%% Rate Constants
+\glsxtrnewsymbol[description={motif production rate constants}]{mprc}{\ensuremath{\lambda}}
+\def\mprc{{\ensuremath{\gls{mprc}}}}
+
+\glsxtrnewsymbol[description={motif production rate constants standard deviation}]{mprcstd}{\ensuremath{\sigma(\lambda)}}
+\def\mprcstd{{\ensuremath{\gls{mprcstd}}}}
+
+\glsxtrnewsymbol[description={extension rate constant}]{k}{\ensuremath{k_\text{ext}}}
+\def\eerc{{\ensuremath{\gls{k}}}}
+
+\glsxtrnewsymbol[description={motif production exposure}]{E}{\ensuremath{\mathcal{E}}}
+\def\mpe{{\ensuremath{\gls{E}}}}
+
+\glsxtrnewsymbol[description={motif production rate}]{M}{\ensuremath{\Lambda}}
+\def\mpr{{\ensuremath{\gls{M}}}}
+
+\glsxtrnewsymbol[description={breakage rate constant}]{brc}{\ensuremath{\beta}}
+\def\brc{{\ensuremath{\gls{brc}}}}
+
+\glsxtrnewsymbol[description={effective breakage frequency}]{ebf}{\ensuremath{\tilde \beta}}
+\def\ebf{{\ensuremath{\gls{ebf}}}}
+
+\glsxtrnewsymbol[description={breakage rate}]{brt}{\ensuremath{\beta}}
+\def\brt{{\ensuremath{\gls{brt}}}}
+
+\glsxtrnewsymbol[description={influx rate constant}]{irc}{\ensuremath{\iota}}
+\def\irc{{\ensuremath{\gls{irc}}}}
+
+\glsxtrnewsymbol[description={outflux rate constant}]{orc}{\ensuremath{\omega}}
+\def\orc{{\ensuremath{\gls{orc}}}}
+
+\glsxtrnewsymbol[description={average motif production rate (Poisson rate)}]{ampr}{\ensuremath{\tilde{ \lambda}}}
+\def\ampr{{\ensuremath{\gls{ampr}}}}
+
+\glsxtrnewsymbol[description={motif ode terms}]{mot}{\ensuremath{f}}
+\def\mot{{\ensuremath{\gls{mot}}}}
+
+\glsxtrnewsymbol[description={influx ode terms}]{iot}{\ensuremath{\mot_\irc}}
+\def\iot{{\ensuremath{\gls{iot}}}}
+
+\glsxtrnewsymbol[description={outflux ode terms}]{oot}{\ensuremath{\mot_\orc}}
+\def\oot{{\ensuremath{\gls{oot}}}}
+
+\glsxtrnewsymbol[description={motif production ode terms}]{mpot}{\ensuremath{\mot_\mprc}}
+\def\mpot{{\ensuremath{\gls{mpot}}}}
+
+\glsxtrnewsymbol[description={breakage ode terms}]{bot}{\ensuremath{\mot_\brc}}
+\def\bot{{\ensuremath{\gls{bot}}}}
+
+%%% Motif Production Rate Components
+\glsxtrnewsymbol[description={acceleration of motif production rate constants}]{a}{\ensuremath{\varphi}}
+\def\amprc{{\ensuremath{\gls{a}}}}
+
+\glsxtrnewsymbol[description={dangling motif production rate constants}]{f}{\ensuremath{\zeta}}
+\def\dmprc{{\ensuremath{\gls{f}}}}
+
+\glsxtrnewsymbol[description={sequence dependent motif production rate constant}]{s}{\ensuremath{\varsigma}}
+\def\smprc{{\ensuremath{\gls{s}}}}
+
+\glsxtrnewsymbol[description={temperature dependence of the motif production rate constants}]{b}{\ensuremath{\tau}}
+\def\tmprc{{\ensuremath{\gls{b}}}}
+
+%% Motifs
+\glsxtrnewsymbol[description={left produced motif}]{lpm}{\ensuremath{p_l}}
+\def\lpm{{\ensuremath{\gls{lpm}}}}
+
+\glsxtrnewsymbol[description={central produced motif}]{cpm}{\ensuremath{p_c}}
+\def\cpm{{\ensuremath{\gls{cpm}}}}
+
+\glsxtrnewsymbol[description={right produced motif}]{rpm}{\ensuremath{p_r}}
+\def\rpm{{\ensuremath{\gls{rpm}}}}
+
+\glsxtrnewsymbol[description={product template motif}]{tpm}{\ensuremath{ \cpm^{\prime} }}
+\def\tpm{{\ensuremath{\gls{tpm}}}}
+
+\glsxtrnewsymbol[description={left reactant motif}]{lrm}{\ensuremath{ l }}
+\def\lrm{{\ensuremath{\gls{lrm}}}}
+
+\glsxtrnewsymbol[description={right reactant motif}]{rrm}{\ensuremath{ r }}
+\def\rrm{{\ensuremath{\gls{rrm}}}}
+
+\def\confreq{\ensuremath{\phi}}
+
+\glsxtrnewsymbol[description={left continuation frequency}]{lconfreq}{\ensuremath{ \confreq_- }}
+\def\lconfreq{{\ensuremath{\gls{lconfreq}}}}
+
+\glsxtrnewsymbol[description={right continuation frequency}]{rconfreq}{\ensuremath{ \confreq_+ }}
+\def\rconfreq{{\ensuremath{\gls{rconfreq}}}}
+
+\def\0{0}%\emptyset}
+\def\reprod{\ensuremath{{\cpm,\tpm}}}
+\def\reproduction{\ensuremath{{\cpm(\lrm,\rrm),\tpm}}}
+\def\reactants{{\ensuremath{ {\lrm,\rrm,\tpm} }}}
+\newcommand\inv[1]{\left( #1 \right)^{-1}}
+\newcommand\ex[1]{{\ensuremath{e^{#1}}}}
+
+% Bayesian Rate Inference
+\glsxtrnewsymbol[description={signal}]{signal}{\ensuremath{ s }}
+\def\signal{{\ensuremath{\gls{signal}}}}
+
+\glsxtrnewsymbol[description={data (ligation counts)}]{data}{\ensuremath{ d }}
+\def\data{{\ensuremath{\gls{data}}}}
+
+\glsxtrnewsymbol[description={entropy}]{entropy}{\ensuremath{ S }}
+\def\entropy{{\ensuremath{\gls{entropy}}}}
+
+\glsxtrnewsymbol[description={system level zebraness: average fraction of alternating vs. homogeneous binary motis over all strands weighted by their length.}]{slz}{\ensuremath{ Z }}
+\def\slz{{\ensuremath{\gls{slz}}}}
+
+% Math
+\def\N{\ensuremath{\mathbb N}}
+\def\R{\ensuremath{\mathbb R}}
+\def\No{\ensuremath{\N_0}}
+\def\nnR{\ensuremath{\R_{\geq 0}}}
+\def\Idx{\ensuremath{I}}
+
+\def\hammingspace{{\ensuremath{\mathbb H}}}
+\glsxtrnewsymbol[description={Hamming space: Set of all motifs from alphabet
+$\alphabet$ with motiflength $\motiflength$.}]{hammingSpace}{\ensuremath{ \hammingspace_ {\alphabet, \motiflength}}}
+\def\hammingSpace{{\ensuremath{\gls{hammingSpace}}}}
+
+\def\motifspace{{\ensuremath{\mathbb M}}}
+\glsxtrnewsymbol[description={Motif space: Set of all motifs for alphabet
+$\alphabet$ and motiflength $\motiflength$.}]{motifSpace}{\ensuremath{ \motifspace _ {\alphabet, \motiflength}}}
+\def\motifSpace{{\ensuremath{\gls{motifSpace}}}}
+
+\glsxtrnewsymbol[description={Motif hyphen space: Motif space equiped with an
+index for a specific covalent bound (hyphen) in this motif}]{motifHyphenSpace}{\ensuremath{ \motifspace_{\alphabet,\motiflength,I}}}
+\def\motifHyphenSpace{{\ensuremath{\gls{motifHyphenSpace}}}}
+
+\glsxtrnewsymbol[description={Number space (isomorphic to $\No$)}]{numberSpace}{\ensuremath{ \mathbb O}}
+\def\numberSpace{{\ensuremath{\gls{numberSpace}}}}
+
+\glsxtrnewsymbol[description={ Concentration space (isomorphic to $\nnR$)}]{concentrationSpace}{\ensuremath{ \widetilde {\mathbb O}}}
+\def\concentrationSpace{{\ensuremath{\gls{concentrationSpace}}}}
+
+\glsxtrnewsymbol[description={
+    Motif production space: Set of all templated motif productions with product and template in motif space $\motifSpace$.
+}]{motifProductionSpace}{\ensuremath{{\mathbb P}_\motifSpace}}
+\def\motifProductionSpace{\ensuremath{\gls{motifProductionSpace}}}
+
+\glsxtrnewsymbol[description={
+    Motif breakage space: Set of all breakages in motif space $\motifSpace$.
+}]{motifBreakageSpace}{\ensuremath{{\mathbb B}_\motifSpace}}
+\def\motifBreakageSpace{{\ensuremath{\gls{motifBreakageSpace}}}}
+
+\glsxtrnewsymbol[description={
+    Time space: In the continuous case equivalant to $\mathbb R$
+}]{timeSpace}{\ensuremath{{\mathbb T}}}
+\def\timeSpace{{\ensuremath{\gls{timeSpace}}}}
+
+\makenoidxglossaries

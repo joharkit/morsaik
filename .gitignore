@@ -1,0 +1,18 @@
+*__pycache__/
+*.pdf
+# python backup files
+*.py~
+*.DS_Store
+*.swp
+.eggs/
+morsaik.egg-info/
+
+data/*
+plots/*
+build/*
+archive/*
+tjobs/*
+docs/build/*
+docs/Makefile
+docs/make.bat
+docs/source/mod/

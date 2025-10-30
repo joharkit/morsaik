@@ -1,0 +1,44 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    textwidth = 426pt
+}
+
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\input{manual/packages/header.tex}
+\input{manual/packages/symbols.tex}
+\newcommand\old[1]{}
+
+\author{Johannes~Harth-Kitzerow\setcounter{footnote}{0}\footnote{jharthki@mpa-garching.mpg.de}
+    \footnote{\mpaadress}
+    \footnote{\qbiotumadress}
+    \footnote{\lmuadress}
+    \footnote{\originsadress}
+}
+
+\begin{document}
+
+\title{Motif Reactor Simulation, Analysis and Inference Kit -- Manual}
+
+\maketitle
+
+\input{manual/main.tex}
+
+\medskip
+
+\bibliographystyle{plain}
+\bibliography{manual/bib}
+
+\end{document}

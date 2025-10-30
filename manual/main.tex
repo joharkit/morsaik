@@ -1,0 +1,56 @@
+\chapter{Main Module}
+
+The \modst{morsaik}-code has been developed using test-driven development.
+A huge base of tests is given in  the \modst{test}-directory of the \modst{morsaik} repository.
+For an overview, please refer to the paper in the paper directory of the git
+repository.
+In addition, an API documentation exists in the docs directory in the git
+repository.
+This manual shell provide deeper insides into the design choices and,
+how different modules are combined together.
+
+The package contains five submodules: \modst{domains}, \modst{read},
+\modst{infer}, \modst{get} and \modst{utils}, see Figure~\ref{fig:submodules},
+which will be discussed in
+separate chapters in the following.
+Additionally, the objects of the package are discussed directly after the
+\modst{domains} submodule, as they are typical inputs of the package functions.
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[
+            modulenode0/.style={double,rounded corners, draw=black!60, fill=white!5, very thick, minimum size=3mm},
+            modulenode1/.style={double,rounded corners, draw=black!60, fill=white!5, thick, minimum size=3mm},
+            objnode1/.style={ellipse, draw=black!60, fill=white!5, very thick, minimum size=3mm},
+            opnode1/.style={rectangle, draw=black!60, fill=white!5, very thick, minimum size=3mm},
+        ]
+        %Nodes
+        \node[modulenode0]  (morsaiknode) {morsaik};
+        \node[modulenode1]  (objnode)  [below =of morsaiknode] {obj};
+        \node[modulenode1]  (domainsnode)  [below left =of morsaiknode] {domains};
+        \node[modulenode1]  (readnode)  [above left=of morsaiknode] {read};
+        \node[modulenode1]  (infernode)  [above =of morsaiknode] {infer};
+        \node[modulenode1]  (utilsnode)  [below right=of morsaiknode] {utils};
+        \node[modulenode1]  (getnode)  [above right=of morsaiknode] {get};
+        %Lines
+        \draw[-, very thick] (morsaiknode.south) -- (objnode.north);
+        \draw[-, very thick] (morsaiknode.south west) -- (domainsnode.north east);
+        \draw[-, very thick] (morsaiknode.north west) -- (readnode.south east);
+        \draw[-, very thick] (morsaiknode.north) -- (infernode.south);
+        \draw[-, very thick] (morsaiknode.north east) -- (getnode.south west);
+        \draw[-, very thick] (morsaiknode.south east) -- (utilsnode.north west);
+    \end{tikzpicture}
+    \caption{Graphical representation of the inference module and iwhichts submodules.}
+    \label{fig:submodules}
+\end{figure}
+
+
+\input{./manual/domains/main.tex}
+\input{./manual/obj/main.tex}
+\input{./manual/read/main.tex}
+\input{./manual/infer/main.tex}
+\input{./manual/get/main.tex}
+\input{./manual/utils/main.tex}
+
+\newpage
+\printnoidxglossary[type=symbols,style=long,title={List of Symbols}]

@@ -1,6 +1,6 @@
 [project]
 name = "morsaik"
-version = "0.2.0"
+version = "0.1.0"
 authors = [
     { name="Johannes Harth-Kitzerow", email="jharthki@mpa-garching.mpg.de" },
 ]
@@ -51,5 +51,5 @@ requires = ["setuptools>=65.7.0",
 build-backend = "setuptools.build_meta"
 
 [project.urls]
-Homepage = "https://gitlab.mpcdf.mpg.de/jharthki/kdi"
-Issues = "https://gitlab.mpcdf.mpg.de/jharthki/kdi/issues"
+Homepage = "https://github.com/joharkit/morsaik"
+Issues = "https://github.com/joharkit/morsaik/issues"

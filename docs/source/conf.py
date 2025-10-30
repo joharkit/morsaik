@@ -12,7 +12,7 @@ needs_sphinx = "3.2.0"
 project = 'Motif Reactor Simulation, Analysis and Inference Kit'
 copyright = '2025, Johannes Harth-Kitzerow'
 author = 'Johannes Harth-Kitzerow'
-release = "0.2.0" # morsaik.__version__
+release = "0.1.0" # morsaik.__version__
 version = release[:-2]
 
 language = "en"

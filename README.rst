@@ -25,7 +25,7 @@ For an overview of the package and its aim, please refer to the paper.
 Installation
 ------------
 
-You can install ``morsaik`` from PyPi
+You can install ``morsaik`` from PyPI
 
 .. code-block:: shell
 

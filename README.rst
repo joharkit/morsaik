@@ -25,17 +25,13 @@ For an overview of the package and its aim, please refer to the paper.
 Installation
 ------------
 
-For installation of ``morsaik``, ``poetry`` is reommended.
-Clone this repository and install it with
+You can install ``morsaik`` from PyPi
 
 .. code-block:: shell
 
-    git clone https://github.com/joharkit/morsaik.git
-    cd morsaik
-    poetry init
-    poetry install
+    pip install morsaik
 
-Alternatively, clone this repository, go into the directory and install it via ``pip``:
+Alternatively, clone the repository from source, go into the directory and install it via ``pip``:
 
 .. code-block:: shell
 

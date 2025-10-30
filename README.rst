@@ -11,15 +11,19 @@ efficient simulations are needed
 because the space of possible RNA sequences increases exponentially with the length of the strands,
 as well as the number of reactions between two strands.
 In addition, simulations have to be compared to experimental data for validation and parameter calibration.
-Here, we present the ``MoRSAIK`` python package for sqeuence motif (or k-mer) reactor simulation, analysis and inference.
+Here, we present the ``morsaik`` python package for sqeuence motif (or k-mer) reactor simulation, analysis and inference.
 It enables users to simulate RNA sequence motif dynamics in the mean field approximation
 as well as to infer the reaction parameters from data
 with Bayesian methods and to analyze results by computing observables and plotting.
-``MoRSAIK`` simulates an RNA reactor by following the reactions and the concentrations of all strands inside up to a certain length (of four nucleotides by default).
+``morsaik`` simulates an RNA reactor by following the reactions and the concentrations of all strands inside up to a certain length (of four nucleotides by default).
 Longer strands are followed indirectly, by tracking the concentrations of their containing sequence motifs of that maximum length.
 
 For a more detailed introduction,
-please go to the demos in the `./demos` directory.
+please go to the demos in the 
+
+.. _demos: https://github.com/joharkit/morsaik/tree/main/demos
+
+directory.
 For an overview of the package and its aim, please refer to the paper.
 
 Installation

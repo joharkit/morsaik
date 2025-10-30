@@ -27,7 +27,7 @@ dependencies = [
 license = "GPL-3.0-or-later"
 
 [project.optional-dependencies]
-doc = [
+docs = [
     "sphinx",
     "pyyaml",
     "myst_parser",

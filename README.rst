@@ -19,12 +19,15 @@ with Bayesian methods and to analyze results by computing observables and plotti
 Longer strands are followed indirectly, by tracking the concentrations of their containing sequence motifs of that maximum length.
 
 For a more detailed introduction,
-please go to the demos in the 
+please go to the demos_.
 
 .. _demos: https://github.com/joharkit/morsaik/tree/main/demos
 
-directory.
-For an overview of the package and its aim, please refer to the paper.
+For an overview of the package and its aim,
+please refer to the paper_ or the documentation_.
+
+.. _paper: https://github.com/joharkit/morsaik/tree/main/paper
+.. _documentation: https://joharkit.github.io/morsaik
 
 Installation
 ------------

@@ -2,7 +2,7 @@
 # See: http://mirrors.ctan.org/support/latexmk/latexmk.pdf
 
 ## main tex file of the project
-@default_files = ('manual/morsaik_manual.tex');
+@default_files = ('paper/paper.tex','manual/morsaik_manual.tex');
 
 ## build directory, to keep source directory clean
 $out_dir = "build";

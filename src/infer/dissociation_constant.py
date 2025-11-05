@@ -83,19 +83,22 @@ def template_averaged_dissociation_constant_from_strand_reactor_parameters(
 
 
 def energy_continuous_block(ii,jj,kk,ll, complements, parameters):
+    # check that block is actually a block and not a blunt end
     if ii+jj==0 or kk+ll==0:
         return 0.
     number_of_mismatches, dangling_end, dangling_end2 = analyze_segment(ii,jj,kk,ll, complements)
-    if dangling_end*dangling_end2:
+    # check that block is actually continuous, not dangling on both sides
+    if bool(dangling_end*dangling_end2):
         gamma_current = 0.
     else:
+        # check if any dangling end
         dangling_end = bool(dangling_end + dangling_end2)
         if number_of_mismatches == 0:
             alternating = bool(ii*kk*(ii!=kk)+jj*ll*(jj!=ll))
             if dangling_end:
-                gamma_current = parameters['dG_3_1Match_mean']+(-1)**(1+alternating)*parameters['ddG_3_1Match_alternating']
+                gamma_current = parameters['dG_3_1Match_mean']+0.5*(-1)**(1+alternating)*parameters['ddG_3_1Match_alternating']
             else:
-                gamma_current = parameters['dG_4_2Match_mean']+(-1)**(1+alternating)*parameters['ddG_4_2Match_alternating']
+                gamma_current = parameters['dG_4_2Match_mean']+0.5*(-1)**(1+alternating)*parameters['ddG_4_2Match_alternating']
         if number_of_mismatches == 1:
             if dangling_end:
                 gamma_current = parameters['dG_3_0Match']

@@ -1,6 +1,6 @@
 [project]
 name = "morsaik"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
     { name="Johannes Harth-Kitzerow", email="jharthki@mpa-garching.mpg.de" },
 ]
@@ -53,3 +53,6 @@ build-backend = "setuptools.build_meta"
 [project.urls]
 Homepage = "https://github.com/joharkit/morsaik"
 Issues = "https://github.com/joharkit/morsaik/issues"
+
+[tool.setuptools.packages.find]
+include = ["morsaik", "morsaik*"]

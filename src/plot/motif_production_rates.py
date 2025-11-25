@@ -12,6 +12,7 @@ def motif_production_rates(
             'alpha' : 0.3,
             'label' : 'Strand',
         }],
+        figname='motif_production_rates',
         ax = plt
         ):
     ax.imshow(motif_production_rates)
@@ -22,7 +23,7 @@ def motif_production_rates(
     ax.yticks(ticks=np.arange(0,len(cw.reshape(-1))), labels=cw.reshape(-1), fontsize='x-small')
     if plotpath is not None:
         for plotformat in plotformats:
-            plt.savefig(plotpath+'motif_production_rates'+plotformat)
+            plt.savefig(plotpath+figname+plotformat)
     #plot_rate_constants(motif_production_rates, 'Motif Production Rates', plotpath+'motif_production_rates.pdf')
 
 def sort_by_length(x):

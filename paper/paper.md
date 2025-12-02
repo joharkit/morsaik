@@ -27,7 +27,7 @@ affiliations:
    index: 3
  - name: Exzellenzcluster ORIGINS, Boltzmannstr. 2, 85748 Garching, Germany
    index: 4
-date: 01 Oktober 2024
+date: 02 December 2025
 bibliography: paper.bib
 header-includes: 
   - \usepackage{tikz}
@@ -35,7 +35,7 @@ header-includes:
 
 # Statement of need 
 
-Origins of life research investigates, how life could emerge from prebiotic chemistry only.
+Origins of life research investigates how life could emerge from prebiotic chemistry only.
 Living systems as we know them today rely on RNA, DNA and proteins.
 According to the central dogma of molecular biology, information is stored in DNA,
 transfered by RNA resulting in proteins that catalyze functional reactions, such as synthesis and replication of DNA and RNA. <!--- https://libgallery.cshl.edu/items/show/52220 --->

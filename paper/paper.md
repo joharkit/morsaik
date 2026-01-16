@@ -38,7 +38,7 @@ header-includes:
 Origins of life research investigates how life could emerge from prebiotic chemistry only.
 Living systems as we know them today rely on RNA, DNA and proteins.
 According to the central dogma of molecular biology, information is stored in DNA,
-transfered by RNA resulting in proteins that catalyze functional reactions, such as synthesis and replication of DNA and RNA. <!--- https://libgallery.cshl.edu/items/show/52220 --->
+transferred by RNA resulting in proteins that catalyze functional reactions, such as synthesis and replication of DNA and RNA. <!--- https://libgallery.cshl.edu/items/show/52220 --->
 One possible explanation of how this mechanism evolved provides the RNA world hypothesis [@Crick1968TheOrigin; @Higgs2015TheRNAWorld; @Orgel1968Evolution; @Pressman2015TheRNAWorld; @Szostak2012TheEightfold].
 It states that life could emerge from RNA strands only, storing and transferring biological information,
 as well as catalyzing reactions as ribozymes.
@@ -60,7 +60,7 @@ In order to investigate those RNA reactors, efficient simulations are needed
 because the space of possible RNA sequences increases exponentially with the length of the strands,
 as well as the number of reactions between two strands.
 In addition, simulations have to be compared to experimental data for validation and parameter calibration.
-Here, we present the ``MoRSAIK`` python package for sqeuence motif (or k-mer) reactor simulation, analysis and inference.
+Here, we present the ``MoRSAIK`` python package for sequence motif (or k-mer) reactor simulation, analysis and inference.
 It enables users to simulate RNA sequence motif dynamics in the mean field approximation
 as well as to infer the reaction parameters from data
 with Bayesian methods and to analyze results by computing observables and plotting.
@@ -113,7 +113,7 @@ With ``MoRSAIK`` one can simulate motif concentration trajectories given the rea
 infer the reaction rate constants given templated ligation counts,
 as well as compute the reaction rate constants based on the free energy model of [@Goeppel2022Thermodynamic] and its adaptation for motifs [@HarthKitzerow2024Sequence].
 
-The ``MoRSAIK``-package constists of six modules: `domains`, `read`, `infer`, `get`, `utils`, `plot`, and the objects themselves (`obj`).
+The ``MoRSAIK``-package consists of six modules: `domains`, `read`, `infer`, `get`, `utils`, `plot`, and the objects themselves (`obj`).
 The `domains`-module extends (classic) `nifty8` domains [@nifty5] to store the
 `unit` [@units] additionally to the shape `obj`ects to ensure consistency.
 The `read`-module contains a set of functions that read `yaml` files [@pyyaml], saved arrays, and different data files such as output and parameter files of RNA strand reactor simulations.
@@ -122,9 +122,9 @@ The `get`-module either reads in a stored result object if found in the result a
 
 The `utils`-module is a set of different useful functions that do not belong to one of the other modules.
 The `plot`-module provides a set of plotting functions for several ``MoRSAIK``-objects.
-It is based on matplotlib [@Hunter2007Matplotlib].
+It is based on `matplotlib` [@Hunter2007Matplotlib].
 ``MoRSAIK``-objects are implemented in the `morsaik/obj` directory, which is not a separate (sub)module, but imported directly with ``MoRSAIK``.
-Typical objects are motif vectors, which are arrays of motif concetrations motif trajectories, time trajectories of motifs vectors, and motif trajectory ensembles, which are ensembles of motif trajectories.
+Typical objects are motif vectors, which are arrays of motif concentrations motif trajectories, time trajectories of motifs vectors, and motif trajectory ensembles, which are ensembles of motif trajectories.
 For readability, objects are designed as `namedtuple`s on the user level.
 During computation they are transformed to ``Jax``-arrays [@Jax2018Github] to ensure efficient computations and differentiability, where needed.
 All functions are split into small subfunctions to ensure flexibility.
@@ -137,7 +137,7 @@ The implementation in ``Jax`` enables fast computation and differentiable models
 ``MoRSAIK`` is the first package that provides implementation of Bayesian inference methods for RNA reactor simulations.
 
 Current research projects using ``MoRSAIK`` are the comparison of the RNA sequence motif dynamics in an RNA strand reactor to the dynamics in an RNA motif reactor [@HarthKitzerow2024Sequence]
-and the comparison of the infered motif dynamics to the originating strand dynamics [@HarthKitzerow2024Projection].
+and the comparison of the inferred motif dynamics to the originating strand dynamics [@HarthKitzerow2024Projection].
 
 # Acknowledgements
 

@@ -87,6 +87,7 @@ def motif_trajectories(
                     'edgecolor':'none',
                     'alpha':'0.7'
                 },
+                },
             'YY':{
                 'text':'b',
                 'xy':(0,1),

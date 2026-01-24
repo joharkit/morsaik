@@ -81,7 +81,11 @@ def motif_trajectories(
                 'xycoords':'axes fraction',
                 'xytext':(+0.5,-0.5),
                 'textcoords':'offset fontsize',
-                'verticalalignment':'top'
+                'verticalalignment':'top',
+                'bbox':{
+                    'facecolor':'white',
+                    'edgecolor':'none',
+                    'alpha':'0.7'
                 },
             'YY':{
                 'text':'b',
@@ -89,7 +93,12 @@ def motif_trajectories(
                 'xycoords':'axes fraction',
                 'xytext':(+0.5,-0.5),
                 'textcoords':'offset fontsize',
-                'verticalalignment':'top'
+                'verticalalignment':'top',
+                'bbox':{
+                    'facecolor':'white',
+                    'edgecolor':'none',
+                    'alpha':'0.7'
+                },
                 },
             'XYX':{
                 'text':'c',
@@ -97,7 +106,12 @@ def motif_trajectories(
                 'xycoords':'axes fraction',
                 'xytext':(+0.5,-0.5),
                 'textcoords':'offset fontsize',
-                'verticalalignment':'top'
+                'verticalalignment':'top',
+                'bbox':{
+                    'facecolor':'white',
+                    'edgecolor':'none',
+                    'alpha':'0.7'
+                },
                 },
             'XXXX':{
                 'text':'d',
@@ -105,7 +119,12 @@ def motif_trajectories(
                 'xycoords':'axes fraction',
                 'xytext':(+0.5,-0.5),
                 'textcoords':'offset fontsize',
-                'verticalalignment':'top'
+                'verticalalignment':'top',
+                'bbox':{
+                    'facecolor':'white',
+                    'edgecolor':'none',
+                    'alpha':'0.7'
+                },
                 },
             },
         **kwargs

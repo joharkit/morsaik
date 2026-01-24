@@ -64,7 +64,13 @@ def system_level_motif_zebraness(
             'xycoords':'axes fraction',
             'xytext':(+0.5,-0.5),
             'textcoords':'offset fontsize',
-            'verticalalignment':'top'},
+            'verticalalignment':'top',
+            'bbox':{
+                'facecolor':'white',
+                'edgecolor':'none',
+                'alpha':'0.7'
+            },
+            },
     ):
     """
     plots system level motif zebraness, i.e. the fraction of alternating 2-mers
@@ -94,7 +100,13 @@ def system_level_motif_zebraness(
         'xycoords':'axes fraction',
         'xytext':(+0.5,-0.5),
         'textcoords':'offset fontsize',
-        'verticalalignment':'top'},
+        'verticalalignment':'top',
+        'bbox':{
+            'facecolor':'white',
+            'edgecolor':'none',
+            'alpha':'0.7'
+        },
+        },
 
     Returns:
     --------

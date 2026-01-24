@@ -1,6 +1,6 @@
 [project]
 name = "morsaik"
-version = "0.1.3"
+version = "0.1.4"
 authors = [
     { name="Johannes Harth-Kitzerow", email="jharthki@mpa-garching.mpg.de" },
 ]

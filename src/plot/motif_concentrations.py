@@ -85,7 +85,7 @@ def motif_trajectories(
                 'bbox':{
                     'facecolor':'white',
                     'edgecolor':'none',
-                    'alpha':'0.7'
+                    'alpha':0.7,
                 },
                 },
             'YY':{
@@ -98,7 +98,7 @@ def motif_trajectories(
                 'bbox':{
                     'facecolor':'white',
                     'edgecolor':'none',
-                    'alpha':'0.7'
+                    'alpha':0.7,
                 },
                 },
             'XYX':{
@@ -111,7 +111,7 @@ def motif_trajectories(
                 'bbox':{
                     'facecolor':'white',
                     'edgecolor':'none',
-                    'alpha':'0.7'
+                    'alpha':0.7,
                 },
                 },
             'XXXX':{
@@ -124,7 +124,7 @@ def motif_trajectories(
                 'bbox':{
                     'facecolor':'white',
                     'edgecolor':'none',
-                    'alpha':'0.7'
+                    'alpha':0.7,
                 },
                 },
             },

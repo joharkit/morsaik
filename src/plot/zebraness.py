@@ -68,7 +68,7 @@ def system_level_motif_zebraness(
             'bbox':{
                 'facecolor':'white',
                 'edgecolor':'none',
-                'alpha':'0.7'
+                'alpha':0.7,
             },
             },
     ):
@@ -104,7 +104,7 @@ def system_level_motif_zebraness(
         'bbox':{
             'facecolor':'white',
             'edgecolor':'none',
-            'alpha':'0.7'
+            'alpha':0.7,
         },
         },
 

@@ -164,7 +164,7 @@ if __name__=='__main__':
     plt.plot(simulated_motif_trajectory.times.val/1.e5, simulated_motif_trajectory.motifs['length1strand'].val[:,0], **md_plot_parameters)
     plt.plot(simulated_motif_trajectory.times.val/1.e5, simulated_motif_trajectory.motifs['length2strand'].val[:,0,0], **md_plot_parameters)
     plt.xlabel(f"Time [$10^5 {(kdi.read.symbol_config('time', unitformat=True)).unit}$]")
-    plt.ylabel('Concentration [{}]'.format(simulated_motif_trajectory.unit))
+    plt.ylabel('Concentration [{}]'.format(simulated_motif_trajectory.unit.unit))
     plt.xlim((0,0.5e1))
     plt.ylim((0,0.01))
     for fileformat in ['pdf']:

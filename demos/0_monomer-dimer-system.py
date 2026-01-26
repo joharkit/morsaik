@@ -12,7 +12,7 @@ def infer_motif_trajectory_from_dimerization_rate_constant(
         unit : kdi.Unit = kdi.make_unit('mol')/kdi.make_unit('L'),
         motif_production_rate_constant = 1.,
         initial_monomer_concentration : float = 1.e-2,
-        total_mass : float = 1.e-2+2*1.e-5
+        total_mass : float = 1.e-2+2*1.e-5,
     ) -> kdi.MotifTrajectory:
     f0 = initial_monomer_concentration/total_mass
     monomer_concentrations = initial_monomer_concentration*np.arange(100)/100
@@ -50,7 +50,9 @@ def simulate_monomer_dimer_system(
         motif_production_rate_constant : int = 1.,
         maximum_ligation_window_length : int = 4,
         time_unit : kdi.Unit = kdi.read.symbol_config('time', unitformat=True),
-        ode_integration_method = 'LSODA'
+        ode_integration_method = 'BDF',
+        ivp_atol = 1.e-6,
+        ivp_rtol = 1.e-3,
     ) -> kdi.MotifTrajectory:
     resolution_factor = 1e-1 #16*16 #1e-9
     t_span = (0,1.e6)#(0,1.e12)
@@ -101,7 +103,10 @@ def simulate_monomer_dimer_system(
         initial_motif_concentrations_vector,
         times=times,
         complements=complements,
+        concentrations_are_logarithmized = False,
         ode_integration_method = ode_integration_method,# 'BDF',#'Radau'
+        ivp_atol=ivp_atol,
+        ivp_rtol=ivp_rtol,
     )
 
 def simulate_monomer_dimer_system_with_jax():
@@ -122,9 +127,12 @@ def simulate_monomer_dimer_system_with_jax():
 
 if __name__=='__main__':
     scenario = 'monomer-dimer-system'
-    ode_integration_method = 'LSODA'
+    ode_integration_method = 'BDF'
     analytical_motif_trajectory = infer_motif_trajectory_from_dimerization_rate_constant()
-    simulated_motif_trajectory = simulate_monomer_dimer_system()
+    simulated_motif_trajectory = simulate_monomer_dimer_system(
+            ivp_atol=1.e-10,
+            ivp_rtol=1.e-6
+            )
 
     plotpath = './Plots/'+scenario+'/'
     makedirs(plotpath, exist_ok=True)

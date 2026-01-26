@@ -1,6 +1,7 @@
 import morsaik as kdi
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
 from os import makedirs
 
 from diffrax import diffeqsolve, ODETerm, Dopri5, SaveAt
@@ -156,13 +157,15 @@ if __name__=='__main__':
             'label' : 'Motif',
             }
 
-    plt.plot(analytical_motif_trajectory.times.val, analytical_motif_trajectory.motifs['length1strand'].val[:,0], **td_plot_parameters)
-    plt.plot(analytical_motif_trajectory.times.val, analytical_motif_trajectory.motifs['length2strand'].val[:,0,0], **td_plot_parameters)
-    plt.plot(simulated_motif_trajectory.times.val, simulated_motif_trajectory.motifs['length1strand'].val[:,0], **md_plot_parameters)
-    plt.plot(simulated_motif_trajectory.times.val, simulated_motif_trajectory.motifs['length2strand'].val[:,0,0], **md_plot_parameters)
-    plt.xlabel(f"Time [{kdi.transform_unit_to_str(kdi.read.symbol_config('time', unitformat=True))}]")
+    plt.rc('font', size=18)
+    plt.rcParams['figure.constrained_layout.use'] = True
+    plt.plot(analytical_motif_trajectory.times.val/1.e5, analytical_motif_trajectory.motifs['length1strand'].val[:,0], **td_plot_parameters)
+    plt.plot(analytical_motif_trajectory.times.val/1.e5, analytical_motif_trajectory.motifs['length2strand'].val[:,0,0], **td_plot_parameters)
+    plt.plot(simulated_motif_trajectory.times.val/1.e5, simulated_motif_trajectory.motifs['length1strand'].val[:,0], **md_plot_parameters)
+    plt.plot(simulated_motif_trajectory.times.val/1.e5, simulated_motif_trajectory.motifs['length2strand'].val[:,0,0], **md_plot_parameters)
+    plt.xlabel(f"Time [$10^5 {(kdi.read.symbol_config('time', unitformat=True)).unit}$]")
     plt.ylabel('Concentration [{}]'.format(simulated_motif_trajectory.unit))
-    plt.xlim((0,0.5e6))
+    plt.xlim((0,0.5e1))
     plt.ylim((0,0.01))
     for fileformat in ['pdf']:
         figname = plotpath+f'concentrations_{ode_integration_method}.{fileformat}'
